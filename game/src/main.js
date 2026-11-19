@@ -212,7 +212,6 @@ function frame(timestamp) {
   audio.update(seconds, { state, screen });
 
   if (screen === 'play' && state.won) setScreen('win');
-  staged = staged && screen === 'play' ? null : staged;
   globalThis.CBObjective = staged ?? world.objective();
   renderer.draw(state, screen, viewExtras());
   hud.render(state, screen, viewExtras());

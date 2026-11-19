@@ -47,11 +47,13 @@ export function createHud(root) {
       <div class="hud-corner hud-top-right">
         <div class="stars" data-field="wanted">☆☆☆☆☆</div>
         <div class="radio-line" data-field="radio">SOLAR FM</div>
+        <div class="station-list" data-field="stations">SOLAR FM · HARBOR WAVES · CAUSEWAY COUNTRY</div>
         <div class="save-line" data-field="save">AUTOSAVE READY</div>
       </div>
 
       <div class="hud-corner hud-bottom-left">
         <div class="weapon-line"><span data-field="weapon">PISTOL</span><span class="ammo" data-field="ammo">12</span><span class="reserve" data-field="reserve">/ 96</span></div>
+        <div class="upgrade-line arsenal-line" data-field="arsenal">PISTOL · (SMG) · (SHOTGUN) · (RIFLE)</div>
         <div class="upgrade-line" data-field="upgrades">GARAGE: ENGINE 0 · ARMOR 0 · GUNS 0</div>
       </div>
 
@@ -214,9 +216,13 @@ export function createHud(root) {
     set('money', money(state.money));
     set('wanted', stars(state.wanted));
     set('radio', radio.name.toUpperCase());
+    set('stations', STATIONS.map((station, index) =>
+      index === state.radioIndex ? `[${station.name.toUpperCase()}]` : station.name.toUpperCase()).join(' · '));
     set('save', state.saveIndicator > 0 ? '● SAVED JUST NOW' : 'AUTOSAVE READY');
     nodes.get('save').classList.toggle('flash', state.saveIndicator > 0);
     set('weapon', weapon.label);
+    set('arsenal', WEAPONS.map((item, index) =>
+      state.owned[index] ? item.label : `(${item.label})`).join(' · '));
     set('ammo', state.weaponAmmo[state.weaponIndex] ?? state.ammo);
     set('reserve', `/ ${state.reserveAmmo[state.weaponIndex] ?? 0}`);
     set('upgrades', `GARAGE: ${UPGRADES.map((item) =>

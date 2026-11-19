@@ -99,6 +99,7 @@ html, body {
 .stars { letter-spacing: .16em; color: var(--gold); font-size: 1.05em; line-height: 1.2; }
 .stars .off { color: rgba(232, 221, 196, .28); }
 .radio-line { font-size: .78em; color: var(--sea); letter-spacing: .09em; margin-top: 4px; text-transform: none; }
+.station-list { font-size: .62em; color: rgba(92, 224, 198, .72); letter-spacing: .05em; margin-top: 3px; }
 .save-line { font-size: .72em; color: rgba(246, 239, 220, .62); margin-top: 3px; letter-spacing: .06em; }
 .save-line.flash { color: var(--gold); }
 
@@ -120,6 +121,7 @@ html, body {
 .weapon-line .ammo { color: var(--gold); margin-left: 10px; }
 .weapon-line .reserve { font-size: .6em; color: rgba(246, 239, 220, .6); }
 .upgrade-line { font-size: .72em; letter-spacing: .09em; color: var(--sea); margin-top: 6px; }
+.arsenal-line { color: rgba(246, 239, 220, .68); }
 .upgrade-line b { color: var(--paper); font-weight: 600; }
 
 #minimap { display: block; width: 176px; height: 176px; border: 1px solid rgba(232, 221, 196, .45); background: rgba(7, 26, 36, .6); image-rendering: auto; }

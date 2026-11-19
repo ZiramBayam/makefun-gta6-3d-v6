@@ -57,7 +57,10 @@ export function createInput(renderer) {
       clicks.push(renderer.screenToLogical(event.clientX, event.clientY));
       queue('click');
       if (document.pointerLockElement !== canvas && typeof canvas.requestPointerLock === 'function') {
-        try { canvas.requestPointerLock(); } catch { /* pointer lock is optional */ }
+        try {
+          const request = canvas.requestPointerLock();
+          if (request?.catch) request.catch(() => {});
+        } catch { /* pointer lock is optional */ }
       }
     } else if (event.button === 2) {
       mouse.right = true;
@@ -106,7 +109,10 @@ export function createInput(renderer) {
     },
     lock() {
       if (document.pointerLockElement !== canvas && typeof canvas.requestPointerLock === 'function') {
-        try { canvas.requestPointerLock(); } catch { /* optional */ }
+        try {
+          const request = canvas.requestPointerLock();
+          if (request?.catch) request.catch(() => {});
+        } catch { /* optional */ }
       }
     },
     unlock() {

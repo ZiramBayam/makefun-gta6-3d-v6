@@ -887,6 +887,9 @@ export function createWorld(city, random) {
           z: state.player.z - 6 + i, life: 3.2, maxLife: 3.2,
         });
       }
+      state.owned = [true, true, true, true];
+      state.weaponIndex = 3;
+      state.ammo = state.weaponAmmo[3];
     } else if (name === 'mission' || name === 'fight') {
       setMission(7);
       state.stage = 1;
@@ -897,6 +900,7 @@ export function createWorld(city, random) {
       state.player.z = spot.z + 18;
       state.player.angle = Math.atan2(spot.x - state.player.x, spot.z - state.player.z);
       say({ speaker: 'Dante Ibarra', text: 'No more messages. Finish it in the last of the sun.' }, 30);
+      state.owned = [true, true, true, true];
       state.weaponIndex = 2;
       state.ammo = state.weaponAmmo[2];
     } else if (name === 'play') {
@@ -904,6 +908,14 @@ export function createWorld(city, random) {
       state.player.x = city.objectiveSpots.pickup.x + 23;
       state.player.z = city.objectiveSpots.pickup.z + 16;
       state.player.angle = Math.atan2(-1, -1);
+      // Park the flyable helicopter in frame next to the first job marker.
+      const heli = state.helicopter;
+      heli.x = state.player.x + 17;
+      heli.z = state.player.z - 11;
+      heli.angle = -0.7;
+      heli.altitude = 0;
+      heli.active = false;
+      heli.player = false;
     }
   }
 
