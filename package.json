@@ -1,0 +1,9 @@
+{
+  "name": "cielo-bay-solar-noir",
+  "private": true,
+  "type": "module",
+  "description": "Offline third-person open-world game built with a vendored Three.js build",
+  "scripts": {
+    "start": "node serve.ts"
+  }
+}
